@@ -1,0 +1,200 @@
+/* Smooth scrolling for user experience / Sanftes Scrollen für eine bessere Benutzererfahrung */
+body, html {
+    scroll-behavior: smooth;
+    background-color: #f8f9fa !important; /* Light background color / Heller Hintergrund */
+}
+
+/* Card styling for better visual separation / Kartengestaltung für bessere visuelle Trennung */
+.card {
+    background-color: #ffffff; /* White background / Weißer Hintergrund */
+    border-radius: 12px; /* Rounded corners / Abgerundete Ecken */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow / Leichter Schatten */
+}
+
+.card-title {
+    font-size: 1.2rem; /* Slightly larger font for title / Etwas größere Schriftgröße für Titel */
+    color: #333; /* Dark text color / Dunkle Schriftfarbe */
+}
+
+.card-text { 
+    font-size: 0.9rem; /* Standard text size / Standardtextgröße */
+}
+
+/* Button styling for success state / Schaltflächenstil für Erfolgsstatus */
+.btn-outline-success {
+    border-color: #198754; /* Green border / Grüne Umrandung */
+    color: #198754; /* Green text / Grüne Schrift */
+}
+.btn-outline-success:hover {
+    background-color: #198754; /* Green background on hover / Grüner Hintergrund beim Hover */
+    color: #fff; /* White text on hover / Weiße Schrift beim Hover */
+}
+
+/* Mobile cart styling for responsiveness / Mobile Einkaufswagen-Styling für Reaktionsfähigkeit */
+.mobile-cart {
+    display: flex; /* Flexbox layout / Flexbox-Layout */
+    justify-content: center; /* Center horizontally / Horizontal zentrieren */
+    align-items: flex-start; /* Align items to the top / Elemente oben ausrichten */
+    position: fixed; /* Fixed position / Feste Position */
+    top: 10%; /* 10% from the top / 10% vom oberen Rand */
+    left: 50%; /* Center horizontally / Horizontal zentrieren */
+    transform: translate(-50%, 0); /* Center the sidebar / Sidebar zentrieren */
+    width: 90%; /* Adjust width for smaller screens / Breite für kleinere Bildschirme anpassen */
+    max-width: 400px; /* Maximum width / Maximale Breite */
+    background: white; /* White background / Weißer Hintergrund */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Light shadow / Leichter Schatten */
+    border-radius: 10px; /* Rounded corners / Abgerundete Ecken */
+    z-index: 1000; /* Keep on top / Immer oben halten */
+    padding: 20px; /* Internal spacing / Innenabstand */
+    overflow-y: auto; /* Scrollbar if content overflows / Scrollbar, falls Inhalt überläuft */
+    max-height: 80%; /* Maximum height / Maximale Höhe */
+}
+
+.mobile-cart.visible {
+    transform: translateX(0); /* Reset transform / Transform zurücksetzen */
+}
+
+.hidden {
+    display: none; /* Hide element / Element ausblenden */
+}
+
+/* Fixed header styling for consistent navigation / Fixierter Header für konsistente Navigation */
+header, .card.bg-success {
+    position: relative; /* Remove fixed header */
+    top: auto; /* Reset top alignment */
+    left: auto; /* Reset left alignment */
+    width: 100%; /* Full width */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for visibility */
+}
+
+body {
+    padding-top: 0; /* Remove space reserved for fixed header */
+}
+
+/* Content and sidebar spacing */
+.content-wrapper {
+    margin-top: 0; /* Remove top margin */
+    display: flex; /* Flexbox layout */
+    gap: 20px; /* Spacing between cards and sidebar */
+    padding: 20px; /* Internal spacing */
+    flex-wrap: wrap;
+}
+
+/* Ensure cards and content align correctly */
+.card-container {
+    flex: 1; /* Allow cards to take up remaining space */
+}
+
+/* Additional fix to align everything neatly */
+main {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Adjust spacing for content / Abstand für Inhalt anpassen */
+.content {
+    margin-top: 10px; /* Space to sidebar / Abstand zur Sidebar */
+}
+
+/* Hover effect for dropdown items / Hover-Effekt für Dropdown-Elemente */
+.dropdown-menu .dropdown-item {
+    color: #198754; /* Default color (Bootstrap green) / Standardfarbe (Bootstrap-Grün) */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transitions / Sanfte Übergänge */
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: #198754; /* Green background on hover / Grüner Hintergrund beim Hover */
+    color: #fff; /* White text on hover / Weiße Schrift beim Hover */
+    border-radius: 4px; /* Optional rounded corners / Optionale abgerundete Ecken */
+}
+
+/* Media queries for responsive design / Medienabfragen für responsives Design */
+@media (max-width: 710px) {
+    .fw-semibold {
+        display: none; /* Hide for smaller screens / Für kleinere Bildschirme ausblenden */
+    }
+    .content h3, .h3 {
+        text-align: center; /* Center text / Text zentrieren */
+        font-size: calc(1.3rem + .1vw); /* Adjust font size / Schriftgröße anpassen */
+    }
+}
+
+@media (max-width: 670px) {
+    .content-wrapper {
+        flex-direction: column; /* Switch to vertical layout / Auf vertikales Layout umstellen */
+    }
+
+    .sidebar {
+        margin-top: 20px; /* Add spacing / Abstand hinzufügen */
+    }
+}
+
+/* Media query: Hide text and show only icons below 120px */
+@media (max-width: 1250px) {
+    .nav-link span {
+        display: none !important; /* Text ausblenden */
+    }
+}
+
+/* Media query: Two horizontal rows of navigation below 470px */
+@media (max-width: 470px) {
+    .nav {
+        display: flex;
+        flex-wrap: wrap; /* Allow items to wrap */
+        justify-content: space-between; /* Ensure horizontal spacing */
+    }
+    .nav-item {
+        flex: 0 0 calc(25% - 10px); /* Four items per row with spacing */
+        text-align: center; /* Center align icons */
+        margin-bottom: 10px; /* Spacing between rows */
+    }
+}
+
+@media (max-width: 375px) {
+    .cart-item {
+      font-size: 0.875rem; /* Kleinere Schriftgröße */
+      padding: 10px; /* Weniger Padding */
+    }
+  
+    .cart-logo {
+      width: 70px; /* Verkleinertes Logo */
+    }
+  }
+
+  .b, strong {
+    font-weight: bolder;
+    font-size: smaller;
+  }
+
+  .text-muted {
+    --bs-text-opacity: 1;
+    color: var(--bs-secondary-color) !important;
+    font-size: smaller;
+  }
+
+  @media (max-width: 350px) {
+    .cart-item {
+        font-size: 0.75rem; /* Reduziere Schriftgröße */
+        padding: 5px; /* Weniger Padding */
+    }
+
+    .btn {
+        padding: 4px 6px; /* Kleinere Buttons */
+        font-size: 0.75rem; /* Kleinere Schrift */
+    }
+
+    .product-img {
+        width: 60px; /* Reduziere Bildgröße */
+        height: 60px;
+    }
+
+    .cart-item div {
+        display: flex;
+        flex-direction: column; /* Text und Icons untereinander anordnen */
+    }
+
+    .cart-item .d-flex {
+        gap: 5px; /* Abstand zwischen den Buttons */
+    }
+}

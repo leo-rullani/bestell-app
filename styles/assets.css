@@ -1,0 +1,54 @@
+/* Logo styling */
+.logo {
+    max-width: 150px;
+    height: auto;
+}
+
+.nav-link {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.nav-link span {
+    font-size: 0.8rem;
+}
+
+/* Product image styling */
+.product-img {
+    height: 80px;
+    width: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+
+/* Badge styling */
+#menu-badge {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    right: 10px; /* Distance from right edge */
+    transform: translate(-50%, -50%); /* Perfect centering */
+    background-color: #FFC105; /* Orange background */
+    color: rgb(33,37,41); /* Black text */
+    font-size: 0.9rem; /* Font size */
+    font-weight: bold; /* Bold text */
+    width: 24px; /* Circle width */
+    height: 24px; /* Circle height */
+    border-radius: 50%; /* Round shape */
+    display: flex; /* Flexbox for centering */
+    justify-content: center; /* Horizontal centering */
+    align-items: center; /* Vertical centering */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Light shadow */
+}
+#menu-badge.d-none {
+    display: none; /* Hide badge */
+}
+
+.text-secondary:hover {
+    color: #198754 !important;
+}

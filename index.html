@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodball</title>
+    <link rel="icon" type="image/x-icon" href="./materials/favicon/favicon-32x32.png">
+
+    <!-- custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./styles/assets.css">
+    <link rel="stylesheet" href="./styles/standard.css">
+    <link rel="stylesheet" href="./styles/basket.css">
+
+    <!-- custom JS -->
+    <script src="./script.js"></script>
+    <script src="./scripts/functions.js"></script>
+    <script src="./scripts/objects.js"></script>
+    <script src="./scripts/templates.js"></script>
+
+    <!-- bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <!-- bootstrap ICON -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+</head>
+
+<body onload="initializeApp()">
+
+    <!-- header -->
+    <div class="card bg-success p-2 text-white bg-opacity-80 mb-4">
+        <div class="card-body d-flex justify-content-between align-items-center">
+            <!-- logo -->
+            <img class="logo" src="./materials/logo/bestellapp_logo.svg" alt="Foodball-Logo">
+            <!-- title -->
+            <p class="fs-3 fw-semibold mb-0">FoodBall – Let's goal!</p>
+            <!-- dropdown-menu -->
+            <div class="btn-group position-relative">
+                <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Menü
+                    <!-- Badge für den Zähler -->
+                    <span id="menu-badge"
+                        class="badge position-absolute top-0 start-100 translate-middle bg-warning rounded-pill d-none">
+                        0
+                    </span>
+                </button>
+
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <!-- Home -->
+                    <li>
+                        <a class="dropdown-item" href="#home">
+                            <i class="bi bi-house-fill me-2"></i> Home
+                        </a>
+                    </li>
+
+                    <!-- Warenkorb -->
+                    <li>
+                        <a class="dropdown-item" href="#sidebar-cart">
+                            <i class="bi bi-cart-fill me-2"></i> Warenkorb
+                        </a>
+                    </li>
+
+                    <!-- Profil -->
+                    <li>
+                        <a class="dropdown-item" href="#profile">
+                            <i class="bi bi-person-fill me-2"></i> Profil
+                        </a>
+                    </li>
+
+                    <!-- Divider -->
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+
+                    <!-- Abmelden -->
+                    <li>
+                        <a class="dropdown-item" href="#logout">
+                            <i class="bi bi-box-arrow-right me-2"></i> Abmelden
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Navigation für die Kategorien -->
+        <nav class="mt-3">
+            <ul class="nav justify-content-between text-center">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#product-categories">
+                        <i class="bi bi-fire" style="font-size: 1.5rem;"></i>
+                        <span class="d-block mt-1">Grill & Klassiker</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#category2">
+                        <i class="bi bi-hand-index-thumb" style="font-size: 1.5rem;"></i>
+                        <span class="d-block mt-1">Snacks & Fingerfood</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#category3">
+                        <i class="bi bi-cup-straw" style="font-size: 1.5rem;"></i>
+                        <span class="d-block mt-1">Drinks & Erfrischungen</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#category4">
+                        <i class="bi bi-box-seam" style="font-size: 1.5rem;"></i>
+                        <span class="d-block mt-1">Süsses & Desserts</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#category5">
+                        <i class="bi bi-people" style="font-size: 1.5rem;"></i>
+                        <span class="d-block mt-1">Familienangebote</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#category6">
+                        <i class="bi bi-egg-fried" style="font-size: 1.5rem;"></i>
+                        <span class="d-block mt-1">Vegetarisch & Vegan</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#category7">
+                        <i class="bi bi-geo" style="font-size: 1.5rem;"></i>
+                        <span class="d-block mt-1">Regionale Spezialitäten</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#category8">
+                        <i class="bi bi-snow" style="font-size: 1.5rem;"></i>
+                        <span class="d-block mt-1">Specials für den Winter</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    </div>
+    </div>
+
+    <!-- content-wrapper -->
+    <main class="content-wrapper">
+        <!-- product section -->
+        <section class="content">
+            <h3 class="mb-4 text-success fw-bold">MatchDay – Food & Drinks</h3>
+            <!-- add other categories and products here -->
+            <!-- category: grill & klassiker -->
+            <section id="product-categories" class="container">
+                <!-- category title -->
+                <h5 class="mb-3 text-dark fw-bold">Grill & Klassiker</h5>
+                <!-- prduct card stadionwurst -->
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body d-flex align-items-center">
+                        <img class="rounded product-img me-3" src="./materials/img/stadionwurst.png" alt="Stadionwurst">
+                        <div>
+                            <h6 class="card-title mb-1">Stadionwurst</h6>
+                            <p class="card-text text-muted mb-2">CHF 7.00</p>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-success btn-sm me-2"
+                                    onclick="updateProductQuantity('Stadionwurst', -1)">
+                                    -
+                                </button>
+                                <button class="btn btn-outline-success btn-sm ms-2 btn-add-to-cart"
+                                    data-name="Stadionwurst" data-price="CHF 7.00"
+                                    onclick="addToCart({ name: 'Stadionwurst', price: 'CHF 7.00' })">
+                                    +
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- product card burger -->
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body d-flex align-items-center">
+                        <img class="rounded product-img me-3" src="./materials/img/burger.png" alt="Burger">
+                        <div>
+                            <h6 class="card-title mb-1">Burger</h6>
+                            <p class="card-text text-muted mb-2">CHF 9.00</p>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-success btn-sm me-2"
+                                    onclick="updateProductQuantity('Burger', -1)">
+                                    -
+                                </button>
+                                <button class="btn btn-outline-success btn-sm ms-2 btn-add-to-cart" data-name="Burger"
+                                    data-price="CHF 9.00" onclick="addToCart({ name: 'Burger', price: 'CHF 9.00' })">
+                                    +
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- product hot dog -->
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body d-flex align-items-center">
+                        <img class="rounded product-img me-3" src="./materials/img/hotdog.png" alt="Hot-Dog">
+                        <div>
+                            <h6 class="card-title mb-1">Hot Dog</h6>
+                            <p class="card-text text-muted mb-2">CHF 5.00</p>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-success btn-sm me-2"
+                                    onclick="updateProductQuantity('Hot Dog', -1)">
+                                    -
+                                </button>
+                                <button class="btn btn-outline-success btn-sm ms-2 btn-add-to-cart"
+                                    data-name="Stadionwurst" data-price="CHF 5.00"
+                                    onclick="addToCart({ name: 'Hot Dog', price: 'CHF 5.00' })">
+                                    +
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- product kebab -->
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body d-flex align-items-center">
+                        <img class="rounded product-img me-3" src="./materials/img/kebab.png" alt="Kebab">
+                        <div>
+                            <h6 class="card-title mb-1">Kebab</h6>
+                            <p class="card-text text-muted mb-2">CHF 10.00</p>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-success btn-sm me-2"
+                                    onclick="updateProductQuantity('Kebab', -1)">
+                                    -
+                                </button>
+                                <button class="btn btn-outline-success btn-sm ms-2 btn-add-to-cart" data-name="Kebab"
+                                    data-price="CHF 10.00" onclick="addToCart({ name: 'Kebab', price: 'CHF 10.00' })">
+                                    +
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- product bbq -->
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body d-flex align-items-center">
+                        <img class="rounded product-img me-3" src="./materials/img/bbq.png" alt="BBQ">
+                        <div>
+                            <h6 class="card-title mb-1">BBQ</h6>
+                            <p class="card-text text-muted mb-2">CHF 9.00</p>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-success btn-sm me-2"
+                                    onclick="updateProductQuantity('BBQ', -1)">
+                                    -
+                                </button>
+                                <button class="btn btn-outline-success btn-sm ms-2 btn-add-to-cart" data-name="BBQ"
+                                    data-price="CHF 9.00" onclick="addToCart({ name: 'BBQ', price: 'CHF 9.00' })">
+                                    +
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- category: snacks & fingerfood -->
+            <section id="category2" class="container category-section">
+                <!-- category: title -->
+                <h5 class="mb-3 text-dark fw-bold">Snacks & Fingerfood</h5>
+                <!-- product card: pommes -->
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body d-flex align-items-center">
+                        <img class="rounded product-img me-3" src="./materials/img/pommes.png" alt="Pommes">
+                        <div>
+                            <h6 class="card-title mb-1">Pommes</h6>
+                            <p class="card-text text-muted mb-2">CHF 5.00</p>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-success btn-sm me-2"
+                                    onclick="updateProductQuantity('Pommes', -1)">
+                                    -
+                                </button>
+                                <button class="btn btn-outline-success btn-sm ms-2 btn-add-to-cart"
+                                    data-name="Stadionwurst" data-price="CHF 5.00"
+                                    onclick="addToCart({ name: 'Pommes', price: 'CHF 5.00' })">
+                                    +
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- product card: chicken nuggets -->
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body d-flex align-items-center">
+                        <img class="rounded product-img me-3" src="./materials/img/chickennuggets.png"
+                            alt="Chiken Nuggets">
+                        <div>
+                            <h6 class="card-title mb-1">Chicken Nuggets</h6>
+                            <p class="card-text text-muted mb-2">CHF 6.00</p>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-success btn-sm me-2"
+                                    onclick="updateProductQuantity('Chicken Nuggets', -1)">
+                                    -
+                                </button>
+                                <button class="btn btn-outline-success btn-sm ms-2 btn-add-to-cart"
+                                    data-name="Stadionwurst" data-price="CHF 6.00"
+                                    onclick="addToCart({ name: 'Chicken Nuggets', price: 'CHF 6.00' })">
+                                    +
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- product card: nachos mit käse-dip und jalapeños -->
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body d-flex align-items-center">
+                        <img class="rounded product-img me-3" src="./materials/img/nachos.png" alt="Nachos">
+                        <div>
+                            <h6 class="card-title mb-1">Nachos</h6>
+                            <p class="card-text text-muted mb-2">CHF 8.00</p>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-success btn-sm me-2"
+                                    onclick="updateProductQuantity('Nachos', -1)">
+                                    -
+                                </button>
+                                <button class="btn btn-outline-success btn-sm ms-2 btn-add-to-cart"
+                                    data-name="Stadionwurst" data-price="CHF 8.00"
+                                    onclick="addToCart({ name: 'Nachos', price: 'CHF 8.00' })">
+                                    +
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- product card: mozzarella sticks -->
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body d-flex align-items-center">
+                        <img class="rounded product-img me-3" src="./materials/img/mozarella-sticks.png"
+                            alt="Mozzarella Sticks">
+                        <div>
+                            <h6 class="card-title mb-1">Mozzarella Sticks</h6>
+                            <p class="card-text text-muted mb-2">CHF 4.00</p>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-success btn-sm me-2"
+                                    onclick="updateProductQuantity('Mozzarella Sticks', -1)">
+                                    -
+                                </button>
+                                <button class="btn btn-outline-success btn-sm ms-2 btn-add-to-cart"
+                                    data-name="Mozzarella Sticks" data-price="CHF 4.00"
+                                    onclick="addToCart({ name: 'Mozzarella Sticks', price: 'CHF 8.00' })">
+                                    +
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- category: drinks & erfrischungen -->
+            <section id="category3" class="container category-section">
+                <!-- category: title -->
+                <h5 class="mb-3 text-dark fw-bold">Drinks & Erfrischungen</h5>
+                <!-- product card: softdrinks -->
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body d-flex align-items-center">
+                        <img class="rounded product-img me-3" src="./materials/img/softdrinks.png" alt="Softdrinks">
+                        <div>
+                            <h6 class="card-title mb-1">Softdrinks</h6>
+                            <p class="card-text text-muted mb-2">CHF 5.00</p>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-success btn-sm me-2"
+                                    onclick="updateProductQuantity('Softdrinks', -1)">
+                                    -
+                                </button>
+                                <button class="btn btn-outline-success btn-sm ms-2 btn-add-to-cart"
+                                    data-name="Softdrinks" data-price="CHF 8.00"
+                                    onclick="addToCart({ name: 'Softdrinks', price: 'CHF 5.00' })">
+                                    +
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- product card: stadionbier -->
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body d-flex align-items-center">
+                        <img class="rounded product-img me-3" src="./materials/img/bier.png" alt="Stadionbier">
+                        <div>
+                            <h6 class="card-title mb-1">Stadionbier</h6>
+                            <p class="card-text text-muted mb-2">CHF 6.00</p>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-success btn-sm me-2"
+                                    onclick="updateProductQuantity('Stadionbier', -1)">
+                                    -
+                                </button>
+                                <button class="btn btn-outline-success btn-sm ms-2 btn-add-to-cart"
+                                    data-name="Stadionbier" data-price="CHF 6.00"
+                                    onclick="addToCart({ name: 'Stadionbier', price: 'CHF 6.00' })">
+                                    +
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- product card: wasser -->
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body d-flex align-items-center">
+                        <img class="rounded product-img me-3" src="./materials/img/wasser.png" alt="Wasser">
+                        <div>
+                            <h6 class="card-title mb-1">Wasser</h6>
+                            <p class="card-text text-muted mb-2">CHF 4.00</p>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-success btn-sm me-2"
+                                    onclick="updateProductQuantity('Wasser', -1)">
+                                    -
+                                </button>
+                                <button class="btn btn-outline-success btn-sm ms-2 btn-add-to-cart" data-name="Wasser"
+                                    data-price="CHF 4.00" onclick="addToCart({ name: 'Wasser', price: 'CHF 4.00' })">
+                                    +
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- product card: heissgetränke -->
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body d-flex align-items-center">
+                        <img class="rounded product-img me-3" src="./materials/img/heissgetränke.png"
+                            alt="Heissgetränke">
+                        <div>
+                            <h6 class="card-title mb-1">Tee & Kaffee</h6>
+                            <p class="card-text text-muted mb-2">CHF 4.00</p>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-success btn-sm me-2"
+                                    onclick="updateProductQuantity('Tee & Kaffee', -1)">
+                                    -
+                                </button>
+                                <button class="btn btn-outline-success btn-sm ms-2 btn-add-to-cart"
+                                    data-name="Tee & Kaffee" data-price="CHF 4.00"
+                                    onclick="addToCart({ name: 'Tee & Kaffee', price: 'CHF 4.00' })">
+                                    +
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- product card: energy drinks -->
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body d-flex align-items-center">
+                        <img class="rounded product-img me-3" src="./materials/img/energydrinks.png" alt="Energy-Drink">
+                        <div>
+                            <h6 class="card-title mb-1"> Energy Drinks</h6>
+                            <p class="card-text text-muted mb-2">CHF 4.00</p>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-success btn-sm me-2"
+                                    onclick="updateProductQuantity('Energy Drinks', -1)">
+                                    -
+                                </button>
+                                <button class="btn btn-outline-success btn-sm ms-2 btn-add-to-cart"
+                                    data-name="Energy Drinks" data-price="CHF 4.00"
+                                    onclick="addToCart({ name: 'Energy Drinks', price: 'CHF 4.00' })">
+                                    +
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- category: süsses & desserts -->
+            <section id="category4" class="container category-section">
+                <!-- category: title -->
+                <h5 class="mb-3 text-dark fw-bold">Süsses & Desserts</h5>
+                <!-- product card: churros mit schoko- oder vanille-dip -->
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body d-flex align-items-center">
+                        <img class="rounded product-img me-3" src="./materials/img/churros.png" alt="Churros">
+                        <div>
+                            <h6 class="card-title mb-1">Churros</h6>
+                            <p class="card-text text-muted mb-2">CHF 5.00</p>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-success btn-sm me-2"
+                                    onclick="updateProductQuantity('Churros', -1)">
+                                    -
+                                </button>
+                                <button class="btn btn-outline-success btn-sm ms-2 btn-add-to-cart" data-name="Churros"
+                                    data-price="CHF 5.00" onclick="addToCart({ name: 'Churros', price: 'CHF 5.00' })">
+                                    +
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- product card: donuts -->
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body d-flex align-items-center">
+                        <img class="rounded product-img me-3" src="./materials/img/donuts.png" alt="Donut">
+                        <div>
+                            <h6 class="card-title mb-1">Donuts</h6>
+                            <p class="card-text text-muted mb-2">CHF 5.00</p>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-success btn-sm me-2"
+                                    onclick="updateProductQuantity('Donuts', -1)">
+                                    -
+                                </button>
+                                <button class="btn btn-outline-success btn-sm ms-2 btn-add-to-cart" data-name="Donuts"
+                                    data-price="CHF 8.00" onclick="addToCart({ name: 'Donuts', price: 'CHF 3.00' })">
+                                    +
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- product card: Muffins -->
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body d-flex align-items-center">
+                        <img class="rounded product-img me-3" src="./materials/img/muffin.png" alt="Muffins">
+                        <div>
+                            <h6 class="card-title mb-1">Muffins</h6>
+                            <p class="card-text text-muted mb-2">CHF 3.00</p>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-success btn-sm me-2"
+                                    onclick="updateProductQuantity('Muffins', -1)">
+                                    -
+                                </button>
+                                <button class="btn btn-outline-success btn-sm ms-2 btn-add-to-cart" data-name="Muffins"
+                                    data-price="CHF 8.00" onclick="addToCart({ name: 'Muffins', price: 'CHF 3.00' })">
+                                    +
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- product card: Eiscreme -->
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body d-flex align-items-center">
+                        <img class="rounded product-img me-3" src="./materials/img/eiscreme.png" alt="Eiscreme">
+                        <div>
+                            <h6 class="card-title mb-1">Eiscreme</h6>
+                            <p class="card-text text-muted mb-2">CHF 3.00</p>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-success btn-sm me-2"
+                                    onclick="updateProductQuantity('Eiscreme', -1)">
+                                    -
+                                </button>
+                                <button class="btn btn-outline-success btn-sm ms-2 btn-add-to-cart" data-name="Eiscreme"
+                                    data-price="CHF 3.00" onclick="addToCart({ name: 'Eiscreme', price: 'CHF 3.00' })">
+                                    +
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- category: familienangebote -->
+            <section id="category5" class="container category-section">
+                <!-- category: title -->
+                <h5 class="mb-3 text-dark fw-bold">Familienangebote</h5>
+                <!-- product card: bebbi-meal -->
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body d-flex align-items-center">
+                        <img class="rounded product-img me-3" src="./materials/img/babymeal.png" alt="Baby-Meal">
+                        <div>
+                            <h6 class="card-title mb-1">Bebbi-Meal</h6>
+                            <p class="card-text text-muted mb-2">CHF 5.00</p>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-success btn-sm me-2"
+                                    onclick="updateProductQuantity('Bebbi-Meal', -1)">
+                                    -
+                                </button>
+                                <button class="btn btn-outline-success btn-sm ms-2 btn-add-to-cart"
+                                    data-name="Bebbi-Meal" data-price="CHF 5.00"
+                                    onclick="addToCart({ name: 'Bebbi-Meal', price: 'CHF 5.00' })">
+                                    +
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- product card: familienbox -->
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body d-flex align-items-center">
+                        <img class="rounded product-img me-3" src="./materials/img/familybox.png" alt="Familybox">
+                        <div>
+                            <h6 class="card-title mb-1">Familienbox</h6>
+                            <p class="card-text text-muted mb-2">CHF 20.00</p>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-success btn-sm me-2"
+                                    onclick="updateProductQuantity('Familienbox', -1)">
+                                    -
+                                </button>
+                                <button class="btn btn-outline-success btn-sm ms-2 btn-add-to-cart"
+                                    data-name="Familienbox" data-price="CHF 20.00"
+                                    onclick="addToCart({ name: 'Familienbox', price: 'CHF 20.00' })">
+                                    +
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- category: vegetarisch & vegan -->
+            <section id="category6" class="container category-section">
+                <!-- category: title -->
+                <h5 class="mb-3 text-dark fw-bold">Vegetarisch & Vegan</h5>
+                <!-- product card: planted chicken nuggets -->
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body d-flex align-items-center">
+                        <img class="rounded product-img me-3" src="./materials/img/planted-chicken.png"
+                            alt="Planted-Chickennuggets">
+                        <div>
+                            <h6 class="card-title mb-1">Planted Chicken Nuggets</h6>
+                            <p class="card-text text-muted mb-2">CHF 6.00</p>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-success btn-sm me-2"
+                                    onclick="updateProductQuantity('Planted Chicken', -1)">
+                                    -
+                                </button>
+                                <button class="btn btn-outline-success btn-sm ms-2 btn-add-to-cart"
+                                    data-name="Planted Chicken Nuggets auf Pflanzenbasis" data-price="CHF 6.00"
+                                    onclick="addToCart({ name: 'Planted Chicken', price: 'CHF 6.00' })">
+                                    +
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- product card: veggie-burger -->
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body d-flex align-items-center">
+                        <img class="rounded product-img me-3" src="./materials/img/veggie-burger.png" alt="Drink Item">
+                        <div>
+                            <h6 class="card-title mb-1">Veggie-Burger</h6>
+                            <p class="card-text text-muted mb-2">CHF 8.00</p>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-success btn-sm me-2"
+                                    onclick="updateProductQuantity('Veggie-Burger', -1)">
+                                    -
+                                </button>
+                                <button class="btn btn-outline-success btn-sm ms-2 btn-add-to-cart"
+                                    data-name="Veggie-Burger" data-price="CHF 8.00"
+                                    onclick="addToCart({ name: 'Veggie-Burger', price: 'CHF 8.00' })">
+                                    +
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- product card: falafel-wraps oder -boxen -->
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body d-flex align-items-center">
+                        <img class="rounded product-img me-3" src="./materials/img/falafel.png" alt="Drink Item">
+                        <div>
+                            <h6 class="card-title mb-1">Falafel-Wraps</h6>
+                            <p class="card-text text-muted mb-2">CHF 8.00</p>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-success btn-sm me-2"
+                                    onclick="updateProductQuantity('Falafel-Wraps', -1)">
+                                    -
+                                </button>
+                                <button class="btn btn-outline-success btn-sm ms-2 btn-add-to-cart"
+                                    data-name="Falafel-Wraps oder -Boxen" data-price="CHF 8.00"
+                                    onclick="addToCart({ name: 'Falafel-Wraps', price: 'CHF 8.00' })">
+                                    +
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- product card: vegane pizza-slices -->
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body d-flex align-items-center">
+                        <img class="rounded product-img me-3" src="./materials/img/pizza.png" alt="Pizza">
+                        <div>
+                            <h6 class="card-title mb-1">Vegane Pizza-Slices</h6>
+                            <p class="card-text text-muted mb-2">CHF 8.00</p>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-success btn-sm me-2"
+                                    onclick="updateProductQuantity('Vegane Pizza-Slices', -1)">
+                                    -
+                                </button>
+                                <button class="btn btn-outline-success btn-sm ms-2 btn-add-to-cart"
+                                    data-name="Vegane Pizza-Slices" data-price="CHF 8.00"
+                                    onclick="addToCart({ name: 'Vegane Pizza-Slices', price: 'CHF 8.00' })">
+                                    +
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- category: regionale spezialitäten -->
+            <section id="category7" class="container category-section">
+                <!-- category: title -->
+                <h5 class="mb-3 text-dark fw-bold">Regionale Spezialitäten</h5>
+                <!-- product card: lokale würste -->
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body d-flex align-items-center">
+                        <img class="rounded product-img me-3" src="./materials/img/stadionwurst.png" alt="Bratwurst">
+                        <div>
+                            <h6 class="card-title mb-1">Bratwurst</h6>
+                            <p class="card-text text-muted mb-2">CHF 8.00</p>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-success btn-sm me-2"
+                                    onclick="updateProductQuantity('Bratwurst', -1)">
+                                    -
+                                </button>
+                                <button class="btn btn-outline-success btn-sm ms-2 btn-add-to-cart"
+                                    data-name="Bratwurst oder Käsekrainer" data-price="CHF 8.00"
+                                    onclick="addToCart({ name: 'Bratwurst', price: 'CHF 8.00' })">
+                                    +
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- product card: rösti-taler -->
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body d-flex align-items-center">
+                        <img class="rounded product-img me-3" src="./materials/img/rösti.png" alt="Rösti-Taler">
+                        <div>
+                            <h6 class="card-title mb-1">Rösti-Taler</h6>
+                            <p class="card-text text-muted mb-2">CHF 4.00</p>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-success btn-sm me-2"
+                                    onclick="updateProductQuantity('Rösti-Taler', -1)">
+                                    -
+                                </button>
+                                <button class="btn btn-outline-success btn-sm ms-2 btn-add-to-cart"
+                                    data-name="Rösti-Taler (Beilage)" data-price="CHF 4.00"
+                                    onclick="addToCart({ name: 'Rösti-Taler', price: 'CHF 4.00' })">
+                                    +
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- product card: lokale getränke-->
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body d-flex align-items-center">
+                        <img class="rounded product-img me-3" src="./materials/img/apfelschorle.png" alt="Apfelschorle">
+                        <div>
+                            <h6 class="card-title mb-1">Apfelschorle</h6>
+                            <p class="card-text text-muted mb-2">CHF 4.00</p>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-success btn-sm me-2"
+                                    onclick="updateProductQuantity('Apfelschorle', -1)">
+                                    -
+                                </button>
+                                <button class="btn btn-outline-success btn-sm ms-2 btn-add-to-cart"
+                                    data-name="Apfelschorle oder regionales Gurten-Bier" data-price="CHF 4.00"
+                                    onclick="addToCart({ name: 'Apfelschorle', price: 'CHF 4.00' })">
+                                    +
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- category: specials für den winter -->
+            <section id="category8" class="container category-section">
+                <!-- category: title -->
+                <h5 class="mb-3 text-dark fw-bold">Specials für den Winter</h5>
+                <!-- product card: glühwein oder punsch -->
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body d-flex align-items-center">
+                        <img class="rounded product-img me-3" src="./materials/img/punsch.png" alt="Punsch">
+                        <div>
+                            <h6 class="card-title mb-1">Punsch</h6>
+                            <p class="card-text text-muted mb-2">CHF 5.00</p>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-success btn-sm me-2"
+                                    onclick="updateProductQuantity('Punsch', -1)">
+                                    -
+                                </button>
+                                <button class="btn btn-outline-success btn-sm ms-2 btn-add-to-cart"
+                                    data-name="Glühwein oder Punsch" data-price="CHF 5.00"
+                                    onclick="addToCart({ name: 'Punsch', price: 'CHF 5.00' })">
+                                    +
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- product card: heisse maroni -->
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body d-flex align-items-center">
+                        <img class="rounded product-img me-3" src="./materials/img/marroni.png" alt="Marroni">
+                        <div>
+                            <h6 class="card-title mb-1">Marroni</h6>
+                            <p class="card-text text-muted mb-2">CHF 6.00</p>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-success btn-sm me-2"
+                                    onclick="updateProductQuantity('Heisse Maroni', -1)">
+                                    -
+                                </button>
+                                <button class="btn btn-outline-success btn-sm ms-2 btn-add-to-cart"
+                                    data-name="Heisse Maroni" data-price="CHF 6.00"
+                                    onclick="addToCart({ name: 'Heisse Maroni', price: 'CHF 6.00' })">
+                                    +
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- product card: suppe oder eintopf im becher -->
+                <div class="card shadow-sm border-0 mb-4">
+                    <div class="card-body d-flex align-items-center">
+                        <img class="rounded product-img me-3" src="./materials/img/suppe.png" alt="Suppe">
+                        <div>
+                            <h6 class="card-title mb-1">Suppe</h6>
+                            <p class="card-text text-muted mb-2">CHF 4.00</p>
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-outline-success btn-sm me-2"
+                                    onclick="updateProductQuantity('Suppe', -1)">
+                                    -
+                                </button>
+                                <button class="btn btn-outline-success btn-sm ms-2 btn-add-to-cart"
+                                    data-name="Suppe oder Eintopf im Becher" data-price="CHF 4.00"
+                                    onclick="addToCart({ name: 'Suppe', price: 'CHF 4.00' })">
+                                    +
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            </div>
+        </section>
+
+        <!-- sidebar (sticky-basket) -->
+        <aside id="sidebar-cart" class="sidebar">
+            <div class="basket">
+                <h4>Warenkorb</h4>
+                <div id="cart-items" class="mb-3">
+                    <p>Dein Warenkorb ist leer!</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <strong>Gesamt:</strong>
+                    <span id="total-price">CHF 0.00</span>
+                </div>
+                <button class="btn btn-success mt-3 w-100">Zur Kasse</button>
+            </div>
+        </aside>
+    </main>
+
+    <footer class="bg-light py-5">
+        <div class="container">
+            <!-- logo and social media -->
+            <div class="text-center mb-4">
+                <img src="./materials/logo/bestellapp_logo.svg" alt="FoodBall Logo" class="mb-3"
+                    style="max-width: 150px;">
+                <div class="d-flex justify-content-center gap-3">
+                    <a href="https://www.instagram.com" target="_blank">
+                        <img src="./materials/logo/instagram.png" style="width: 30px;" alt="Instagram">
+                    </a>
+                    <a href="https://www.facebook.com" target="_blank">
+                        <img src="./materials/logo/facebook.png" style="width: 30px;" alt="Facebook">
+                    </a>
+                    <a href="https://www.tiktok.com" target="_blank">
+                        <img src="./materials/logo/tripadvisor.png" style="width: 30px;" alt="TripAdvisor">
+                    </a>
+                </div>
+            </div>
+
+            <!-- links -->
+            <div class="row">
+                <div class="col-md-4">
+                    <h6 class="text-dark fw-bold">Rechtliches</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="/rechtliches/datenschutz.pdf" class="text-secondary text-decoration-none"
+                                target="_blank">Datenschutz</a></li>
+                        <li><a href="/rechtliches/impressum.pdf" class="text-secondary text-decoration-none"
+                                target="_blank">Impressum</a></li>
+                        <li><a href="/rechtliches/agb.pdf" class="text-secondary text-decoration-none"
+                                target="_blank">AGB</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="text-dark fw-bold">Support</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="https://sfl.ch/de" class="text-secondary text-decoration-none" target="_blank"
+                                onclick="openDialog('kundenservice')">Kundenservice</a></li>
+                        <li><a href="https://sfl.ch/de" class="text-secondary text-decoration-none" target="_blank"
+                                onclick="openDialog('partner')">Partner werden</a></li>
+                        <li><a href="https://sfl.ch/de" class="text-secondary text-decoration-none" target="_blank"
+                                onclick="openDialog('sportstaetten')">Sportstätten</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h6 class="text-dark fw-bold">Where Foodball Happens.</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="https://www.fcb.ch/" class="text-secondary text-decoration-none" target="_blank">FC
+                                Basel</a></li>
+                        <li><a href="https://www.bscyb.ch/" class="text-secondary text-decoration-none"
+                                target="_blank">Young Boys</a></li>
+                        <li><a href="https://www.fcz.ch/?srsltid=AfmBOooAl3WTwYtKjW-IGVQTrhr3leAr4hgWET5rXBWzr6oC0aHsXNlj"
+                                class="text-secondary text-decoration-none" target="_blank">FC Zürich</a></li>
+                        <li><a href="https://www.fclugano.com/" class="text-secondary text-decoration-none"
+                                target="_blank">FC Lugano</a></li>
+                        <li><a href="https://servettefc.ch/" class="text-secondary text-decoration-none"
+                                target="_blank">Servette FC</a></li>
+                        <li><a href="https://www.fcsg.ch/home/espen-inside/" class="text-secondary text-decoration-none"
+                                target="_blank">FC St. Gallen</a></li>
+                        <li><a href="https://fcwinterthur.ch/" class="text-secondary text-decoration-none"
+                                target="_blank">FC Winterthur</a></li>
+                        <li><a href="https://fcl.ch/" class="text-secondary text-decoration-none" target="_blank">FC
+                                Luzern</a></li>
+                        <li><a href="https://www.gcz.ch/" class="text-secondary text-decoration-none"
+                                target="_blank">Grasshopper Club Zürich</a></li>
+                        <li><a href="https://www.fcsion.ch/de" class="text-secondary text-decoration-none"
+                                target="_blank">FC Sion</a></li>
+                        <li><a href="https://www.lausanne-sport.ch/" class="text-secondary text-decoration-none"
+                                target="_blank">FC Lausanne-Sport</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- footer bottom -->
+            <div class="text-center mt-4">
+                <small class="text-secondary">© 2024 FoodBall. Alle Rechte vorbehalten.</small>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>

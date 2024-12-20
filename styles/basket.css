@@ -1,0 +1,82 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
+}
+
+header, footer {
+    background: #f4f4f4;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* Wrapper for main content */
+.content-wrapper {
+    display: flex;
+    flex-wrap: wrap; /* Wrap contents if space is limited */
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Left area: product list */
+.content {
+    flex: 1; /* Takes remaining space */
+    background: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-top: 10px; /* Space to sidebar */
+}
+
+/* Right area: sidebar */
+.sidebar {
+    flex: 0 0 300px; /* Feste Breite */
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    position: sticky;
+    top: 10px; /* Abstand vom oberen Rand */
+    max-height: calc(100vh - 10px); /* Maximale Höhe */
+    z-index: 10; /* Über andere Inhalte legen */
+    margin-top: 10px;
+}
+
+/* Sticky-effect for basket */
+.basket {
+    position: sticky;
+    top: 20px; /* Distance from top-edge */
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Remove unnecessary placeholders */
+#product-categories {
+    margin-top: 0;
+}
+
+/* Adjust distance between heading and cards */
+.content h3 {
+    margin-bottom: 20px;
+}
+
+::-webkit-scrollbar {
+    width: 6px; /* Breite des Scrollbalkens */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ccc; /* Farbe des Scrollbalkens */
+    border-radius: 3px; /* Abgerundete Ecken */
+}
+
+::-webkit-scrollbar-track {
+    background: #f4f4f4; /* Hintergrund der Scrollbar */
+}
